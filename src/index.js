@@ -9,6 +9,7 @@ import RouterContainer from "./core/router/RouterContainer";
 import configureStore from "./redux/configureStore";
 import routes from "./router";
 import * as serviceWorker from "./serviceWorker";
+
 moment.locale("en");
 
 const initialState = {};

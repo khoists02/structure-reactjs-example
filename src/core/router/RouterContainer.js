@@ -6,10 +6,12 @@ import { Route, Switch } from "react-router-dom";
 import { PageNotFound, ScrollToTop } from "../../components/Pages";
 import { ConnectedRouter } from "connected-react-router";
 import { createBrowserHistory } from "history";
+
 // import { OidcSettings } from "../../constants/index";
 // import { UserManager } from "oidc-client";
 // import FetchHelper from "../../helpers/FetchHelper";
-// import PrivateLayout from "components/Layout/PrivateLayout";
+import PrivateLayout from "../../components/Layout/PrivateLayout";
+import HomeLayout from "../../components/Layout/HomeLayout";
 
 class RouterContainer extends React.Component {
   static propTypes = {
@@ -119,8 +121,7 @@ class RouterContainer extends React.Component {
               {isEmpty(routes) ? (
                 <Route component={PageNotFound} exact path="/" />
               ) : (
-                // <PrivateLayout>{renderRoutes(routes)}</PrivateLayout>
-                renderRoutes(routes)
+                <HomeLayout>{renderRoutes(routes)}</HomeLayout>
               )}
               <Route component={ScrollToTop} path="*" />
             </Switch>

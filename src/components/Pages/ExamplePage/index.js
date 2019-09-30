@@ -1,23 +1,24 @@
 import React, { Component } from "react";
-// import saga from "modules/example/sagas";
-// import reducer from "modules/example/reducers";
-// import injectReducer from "core/reducer/inject-reducer";
-// import injectSaga from "core/saga/inject-saga";
-// import { createStructuredSelector } from "reselect";
-// import { compose } from "recompose";
-// import { connect } from "react-redux";
-// import { FEATURE_NAME } from "modules/example/constants";
-// import { selectExample } from "modules/example/selectors";
-// import { example } from "modules/example/actions";
-// import { push as navigate } from "react-router-redux";
+
+import injectReducer from "../../../core/reducer/inject-reducer";
+import injectSaga from "../../../core/saga/inject-saga";
+import { createStructuredSelector } from "reselect";
+import { compose } from "recompose";
+import { connect } from "react-redux";
+import saga from "../../../modules/example/sagas";
+import reducer from "../../../modules/example/reducers";
+import { FEATURE_NAME } from "../../../modules/example/constants";
+import { selectExample } from "../../../modules/example/selectors";
+import { example } from "../../../modules/example/actions";
+import { push as navigate } from "react-router-redux";
 class ExamplePage extends Component {
   componentDidMount() {
-    // console.log(this.props.loaded);
-    // this.props.example();
+    console.log(this.props.loaded);
+    this.props.example();
   }
 
   componentDidUpdate() {
-    // console.log(this.props.loaded);
+    console.log(this.props.loaded);
   }
 
   //   logOut = () => {
@@ -37,30 +38,29 @@ class ExamplePage extends Component {
   }
 }
 
-// const mapStateToProps = createStructuredSelector({
-//   loaded: selectExample()
-// });
+const mapStateToProps = createStructuredSelector({
+  loaded: selectExample()
+});
 
-// const mapDispatchToProps = {
-//   example,
-//   navigate
-// };
+const mapDispatchToProps = {
+  example,
+  navigate
+};
 
-// const withConnect = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// );
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
 
-// const withReducer = injectReducer({ key: FEATURE_NAME, reducer });
+const withReducer = injectReducer({ key: FEATURE_NAME, reducer });
 
-// const withSaga = injectSaga({
-//   key: FEATURE_NAME,
-//   saga
-// });
+const withSaga = injectSaga({
+  key: FEATURE_NAME,
+  saga
+});
 
-export default ExamplePage;
-// compose(
-//   withReducer,
-//   withSaga,
-//   withConnect
-// )(ExamplePage);
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect
+)(ExamplePage);
